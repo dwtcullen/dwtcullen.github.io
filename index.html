@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>David Cullen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				 
+					<header id="header">
+						<div style="display: flex; align-items: center; gap: 20px;">
+							<!-- Circular Panel for the Face Photo -->
+							<div style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 3px solid #ccc; margin-top: -170px; position: relative; top: 60px;">
+								<img src="images/headshot.jpg" alt="David Cullen" style="width: 100%; height: 100%; object-fit: cover;">
+							</div>
+							<!-- Text Section -->
+							<div>
+								<h1 style="margin: 0;">David Cullen</h1>
+								<h2 style="margin: 0;">Data Analyst</h2>
+							</div>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="elements.html">Overview</a></li>
+							<li><a href="index.html">Projects</a></li>
+							
+						</ul>
+						<ul class="icons" style="display: flex; align-items: center; gap: 15px;">
+							<li style="margin: 0; padding: 0; font-size: 1rem; list-style: none;">
+								<a href="mailto:dwtcullen@gmail.com" style="text-decoration: none; color: inherit;">dwtcullen@gmail.com</a>
+
+							<li><a href="https://www.linkedin.com/in/david-cullen-459833260/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/dwtcullen/Data-Analysis-Portfolio" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Post -->
+    <section class="post">
+        <!-- Inline CSS Style -->
+        <style>
+            .post {
+                margin: 10px 0;
+                padding: 0;
+            }
+
+            /* Consistent Header Styling */
+            .section-header {
+                margin: 5px 0; /* Reduced margin for minimal top and bottom space */
+                font-size: 1.8rem; /* Set font size */
+                font-weight: normal; /* Set font weight to normal for consistency */
+                color: #333;
+                text-align: center; /* Centered the headings */
+                padding: 5px 0; /* Minimal padding top and bottom */
+            }
+
+            /* Remove margin from the first header in the "post" section */
+            .post .section-header:first-of-type {
+                margin-top: 0; /* Eliminate any top margin */
+            }
+
+            /* Ensure no margin is applied above the "post" section */
+            .post:first-of-type {
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            /* Consistent Text Formatting */
+            .about-paragraph, .post p {
+                font-size: 1rem; /* Uniform font size */
+                line-height: 1.6; /* Consistent line height */
+                margin-bottom: 5px; /* Consistent margin for spacing */
+                color: #444; /* Text color */
+            }
+
+            /* Adjust margin between paragraph and image */
+            .post.featured .about-paragraph:last-of-type {
+                margin-bottom: 0; /* Remove margin below the last paragraph */
+            }
+
+            .post.featured .image.main {
+                margin-top: 0; /* Remove margin above the image */
+            }
+
+            .custom-hr {
+                border: 0;
+                height: 2px;
+                background-color: #ccc;
+                margin: 20px 0;
+            }
+
+            .education-section {
+                margin: 20px 0;
+            }
+
+            .qualification {
+                margin-bottom: 15px;
+            }
+
+            .degree {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .institution {
+                font-style: italic;
+                color: #666;
+            }
+
+            .details {
+                font-size: 1rem;
+                color: #444;
+            }
+
+            /* Flexbox Style for Projects */
+            #projects {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 20px; /* Adjust the spacing between the project panels */
+                padding: 20px 0;
+            }
+
+            .project-panel {
+                display: flex;
+                align-items: center; /* Aligns image and text vertically */
+                justify-content: space-between;
+                border: 1px solid #ccc; /* Border around the panel */
+                padding: 15px;
+                width: 100%; /* Full width for smaller screens */
+                max-width: 600px; /* Limiting max width for each project panel */
+                box-sizing: border-box; /* Ensures padding is included in the width */
+            }
+
+            /* Style for the image in each project panel */
+            .project-image {
+                width: 40%; /* Image takes up 40% of the space */
+                max-width: 150px; /* Ensure image doesn't grow too large */
+                margin-right: 20px;
+            }
+
+            .project-image img {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Style for the text in each project panel */
+            .project-text {
+                width: 60%; /* Text takes up 60% of the space */
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .project-description {
+                font-size: 1rem;
+                color: #444;
+                line-height: 1.6;
+            }
+
+            /* Responsive Design for Smaller Screens */
+            @media (max-width: 768px) {
+                .project-panel {
+                    flex-direction: column; /* Stack image and text on top of each other */
+                    align-items: flex-start;
+                    width: 100%;
+                }
+
+                .project-image {
+                    width: 100%;
+                    margin-right: 0;
+                    margin-bottom: 15px;
+                }
+
+                .project-text {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <!-- About Me Section -->
+        <h2 class="section-header">About Me</h2>
+        <p class="about-paragraph">
+            I am a data analyst with 4 years of experience processing, analyzing, and visualizing large datasets. 
+            I am proficient in Python and R, with experience in SQL, Power BI, and HTML. 
+            I have a strong background in statistical analysis, data visualization, and automation of workflows to streamline research processes.
+        </p>
+        <p class="about-paragraph">
+            My PhD research has focused on extracting high-dimensional datasets from microscopic images. 
+            I am passionate about solving challenging problems through data-driven approaches and effectively communicating results.
+        </p>
+        <p class="about-paragraph">
+            Outside of work, I enjoy learning about advancements in data science, hiking in Queensland's national parks and spending time with family.
+        </p>
+
+        
+        <div class="custom-hr"></div> <!-- Horizontal Line -->
+        <!-- Education Section -->
+        <div class="education-section">
+            <h2 class="section-header">Educational Qualifications</h2>
+
+            <!-- PhD -->
+            <div class="qualification">
+                <div class="degree">Doctor of Philosophy (PhD) in Computational Biology</div>
+                <div class="institution">University of Queensland</div>
+                <div class="details">‘Coordination of DNA replication by Dbf4-dependent Kinase’<br>Thesis submission: Feb 2025</div>
+            </div>
+
+            <!-- Honours Degree -->
+            <div class="qualification">
+                <div class="degree">Bachelor of Biomedical Science w/ Honours</div>
+                <div class="institution">University of Queensland</div>
+                <div class="details">‘Dissecting the kinase-dependent regulation of DNA replication’<br>Graduated: Jun 2020</div>
+            </div>
+
+        </div>
+        <div class="custom-hr"></div> <!-- Horizontal Line -->
+
+    <!-- Featured Post -->
+    </style>
+    <article class="post featured">
+        <header class="section-header">
+            <h2><a href="project1_details.html">Quantitative Image Based Cytometry</a></h2>
+        </header>
+        <p class="about-paragraph">
+            For my PhD research, I developed an automated Python pipeline that measures the characteristics of individual cells within a large asynchronously cycling population. 
+            The pipeline sorts and preprocesses multi-channel microscopic images then segments cells and measures characteristics such as protein expression and DNA replication stress across the cell cycle, exporting the results as a CSV file.
+        </p>
+        
+        <a href="project1_details.html" class="image main"><img src="images/pro1.jpg" alt="" /></a>
+        <ul class="actions special">
+            <li><a href="project1_details.html" class="button large">Read More</a></li>
+        </ul>
+    </article>
+
+    <!-- Posts 
+    <section class="posts">
+        <article>
+            <header>
+                <h2><a href="#">Sed magna ipsum faucibus</a></h2>
+            </header>
+            <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+            <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+            <ul class="actions special">
+                <li><a href="#" class="button">Full Story</a></li>
+            </ul>
+        </article>
+        <article>
+            <header>
+                <h2><a href="#">Primis eget imperdiet lorem</a></h2>
+            </header>
+            <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+            <p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+            <ul class="actions special">
+                <li><a href="#" class="button">Full Story</a></li>
+            </ul>
+        </article>
+        -->
+    </section>
+</div>
+
+
+
+
+
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
