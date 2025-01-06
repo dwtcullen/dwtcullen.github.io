@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Quantitative Image Based Cytometry</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <!-- Inline Style for Background Image -->
+    <style>
+      body {
+        background-image: url('images/bg.jpg') !important; /* Replace with your image */
+        background-size: cover; /* Ensures the image covers the full page */
+        background-position: center center; /* Centers the image */
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1 style="margin: 0;">Quantitative Image Based Cytometry</h1>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Post -->
+        <section class="post">
+          <!-- Inline CSS Style -->
+          <style>
+            /* Styling for Section Headers */
+            .section-header {
+              margin: 20px 0;
+              font-size: 1.8rem;
+              font-weight: normal;
+              color: #333;
+              padding: 5px 0;
+            }
+
+            /* Consistent Text Formatting */
+            .about-paragraph {
+              font-size: 1rem;
+              line-height: 1.6;
+              margin-bottom: 15px;
+              color: #444;
+            }
+
+            /* Horizontal Line */
+            .custom-hr {
+              border: 0;
+              height: 2px;
+              background-color: #ccc;
+              margin: 20px 0;
+            }
+          </style>
+
+          <!-- Process Steps -->
+          <h2 class="section-header">0. Managing the pipeline</h2>
+          <p class="about-paragraph">
+            The image processing pipeline is run through a computing cluster located at the University of Queensland. Individual functions of the pipeline are stored in several .py files, separated according to purpose.
+            To simplify pipeline operation across users of varying programming knowledge, I used a simple front-end function 'process_images' from which users can specify conditions. These include the use of different microscopes,
+            cell types and the output of example images.
+          </p>
+
+          <!-- Centered Image -->
+          <div style="text-align: center;">
+            <img src="images/1_QIBC_0_process_images_notebook.jpg" alt="Front_End_Image_Processing_Function" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <p class="about-paragraph">
+            The function 'process_images' calls each function of the pipeline sequentially to read images, find and measure cells and output a csv dataset and output images as required.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_0_process_images_function.jpg" alt="Front_End_Image_Processing_Function" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <h2 class="section-header">1. File Sorting</h2>
+          <p class="about-paragraph">
+            The file names of images produced in QIBC experiments vary between microscopes but contain information on the well, field and channel of each image (e.g. E_6_fld_4_wv_488_Green.tif). I wrote a different regular expression for files from each microscope used
+			in my research, and use groupdict to create a dictionary with each group name as a key. I then sort the files by WV (wavelength) and return a dataframe grouped by Row, Column and Field. Each resulting group contains the names of each channel
+			from a single field in the 96-well plate.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_1_metadata.jpg" alt="Metadata extraction and file sorting" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <h2 class="section-header">2. Image Reading and Pre-processing</h2>
+          <p class="about-paragraph">
+            Each group of images is read and assembled in a list. For ease of use, blank images are added if less than four images are produced per group.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_2_image_reading.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+		  <p class="about-paragraph">
+            Each group of images is read and assembled in a list. For ease of use, blank images are added if less than four images are produced per group.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_2_image_subtraction.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <h2 class="section-header">3. Segmentation</h2>
+          <p class="about-paragraph">
+            Segmentation is performed using a Cellpose model trained on a set of 150 images to identify in-focus, unclumped nuclei.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_3_segmentation.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+		  <p class="about-paragraph">
+            Below are two channels representing DAPI (DNA dye) and EdU (DNA synthesis marker) from a typical Quantitative Image Based Cytometry experiment. Some cells were ignored by my trained model due to factors such as morphological irregularity in the DAPI signal. In the EdU channel, it may be observed that only a fraction of cells have dark spots indicating DNA replication.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/Cells.jpg" alt="Image Reading and Pre-Processing" style="max-width: 80%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <h2 class="section-header">4. Cell Measurement</h2>
+          <p class="about-paragraph">
+            After segmentation, each individual cell is measured for various characteristics including fluorescence intensity of antibody signals and nuclear morphology.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_4_measurement.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+
+
+          <h2 class="section-header">5. Data Output</h2>
+          <p class="about-paragraph">
+            Finally, all the measurements are compiled and outputted as a CSV file for further analysis and visualization.
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/1_QIBC_5_save_csv.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+		  <p class="about-paragraph">
+            In R, I use dplyr to clean and filter the data then create plots using the ggplots package. Below is an example of the analysis I perform using this method. By measuring DNA content, DNA synthesis rate and the phosphorylation of the protein Retinoblastoma across 40,000 cells, I can accurately calculate changes in cell cycle dynamics between different cell lines. 
+          </p>
+
+		  <div style="text-align: center;">
+            <img src="images/Rb_Figure.jpg" alt="Image Reading and Pre-Processing" style="max-width: 100%; height: auto; display: inline-block; margin: 20px 0;" />
+          </div>
+
+          <div class="custom-hr"></div>
+        </section>
+      </div>
+
+    </div>
+
+  </body>
+</html>
