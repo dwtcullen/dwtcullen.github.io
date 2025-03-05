@@ -117,7 +117,7 @@
           </div>
 
 		  <p class="about-paragraph">
-            Each group of images is read and assembled in a list. For ease of use, blank images are added if less than four images are produced per group.
+            Background subtraction is handled differently depending on whether a GPU is used for image processing. The scikit-image rolling ball is used in case of only CPU, and pyclesperanto top hat sphere is used if GPU is available. Both methods produce the same results, but the top hat sphere is faster.
           </p>
 
 		  <div style="text-align: center;">
